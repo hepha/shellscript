@@ -1,0 +1,10 @@
+#!/bin/zsh
+function ff-flv (){
+for file in $@ 
+do
+    ffmpeg -i "$file" -y -s hd720 -b 6000k -ar 44100 -ab 224k -ac 2   "/mnt/movie/tmp/$file:r.mp4"
+done
+}
+
+# compctl -g '~/bin/*(:t)' ff-flv
+compctl -g '*.flv' + -g '*(-/)' ff-flv
